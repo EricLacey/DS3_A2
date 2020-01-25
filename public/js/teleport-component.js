@@ -25,10 +25,12 @@ AFRAME.registerComponent('teleport', {
     }, 
     teleport : function(){
         const Context_AF = this;
+        //collect the positions of this object
         const x = Context_AF.el.object3D.position.x;
         const y = Context_AF.el.object3D.position.y;
         const z = Context_AF.el.object3D.position.z;
 
+        //get rig and move it to that location
         let rig = document.getElementById('rig')
         rig.setAttribute('position', x + ' ' + (y + 1) + ' ' + z )
     }

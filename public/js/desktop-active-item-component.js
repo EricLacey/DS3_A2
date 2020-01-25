@@ -1,6 +1,6 @@
 'use strict'
 
-AFRAME.registerComponent('desktop-pickup', {
+AFRAME.registerComponent('desktop-active', {
     schema:{},
     init : function(){
         const Context_AF = this; //this refers to "this" component
@@ -11,7 +11,7 @@ AFRAME.registerComponent('desktop-pickup', {
         Context_AF.el.addEventListener('click', function(event){
             console.log('clicked');
             
-            Context_AF.pickup();
+            Context_AF.destroy();
                 
         });
         Context_AF.el.addEventListener('mouseenter', function(event){
@@ -24,23 +24,8 @@ AFRAME.registerComponent('desktop-pickup', {
             Context_AF.el.object3D.scale.set(xScale, yScale, zScale);
         });
     }, 
-    pickup : function(){
+    destroy : function(){
         const Context_AF = this;
-
-        let spawn = document.createElement('a-entity');
-
-        //https://stackoverflow.com/questions/828311/how-to-iterate-through-all-attributes-in-an-html-element
-        for (var i = 0; i < Context_AF.el.attributes.length; i++) {
-            var attrib = Context_AF.el.attributes[i];
-            if (attrib.specified) {
-                spawn.setAttribute(attrib.name, attrib.value);
-            }
-        }
-
-        spawn.setAttribute('position', 0 + ' ' + 0 + ' ' + -2 );
-        spawn.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear');
-        spawn.setAttribute('desktop-active','');
-        spawn.removeAttribute('desktop-pickup');
-        document.getElementById('camera').appendChild(spawn);
+        Context_AF.el.parentNode.removeChild(Context_AF.el);
     }
 })

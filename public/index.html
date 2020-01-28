@@ -59,6 +59,7 @@
             <a-entity id="t-rex" class="clickable" desktop-pickup="" sound="" data-sound-attb="#jp-soundtrack" gltf-model="#t-rex-model" scale="0.122 0.122 0.122" position="0.096 1.602 -0.432" rotation="0 -179.207 0"></a-entity>
         </a-entity>
 
+        <!--all the teleporters-->
         <!--towards -x-->
         <a-entity class="teleporter clickable" teleport="" geometry="primitive: cylinder; height: 0.3; radius: .5" material="color:#0000FF" position="-2 0 0"></a-entity>
         <a-entity class="teleporter clickable" teleport="" geometry="primitive: cylinder; height: 0.3; radius: .5" material="color:#0000FF" position="-10 0 0"></a-entity>
@@ -75,17 +76,13 @@
 
 
     <!--create a rig to hold camera, hand controls, etc and move all at the same time-->
+    <!--rig was originally supposed to work using superhands, also due to the fact that WMR failed me the rig is unnecessary but I left it in there-->
     <a-entity id="rig" position="0 1 0">
         <a-entity id="camera" camera look-controls position="0 1.6 0"></a-camera>
             <a-entity id="ambient" sound="src:#ambient-sounds; autoplay: true; volume:0.5"></a-entity>
         
             <a-entity id="rhand" mixin="touch" vive-controls="hand:right" oculus-touch-controls="hand:right" windows-motion-controls="" physics-collider="" phase-shift="" velocity="" position=""></a-entity>
             <a-entity id="lhand" mixin="touch" vive-controls="" oculus-touch-controls="" windows-motion-controls="hand:left" physics-collider="" phase-shift="" velocity="" position=""></a-entity>
-
-        <!--
-        <a-entity id="leftHand" hand-controls="left"></a-entity>
-        <a-entity id="rightHand" hand-controls="right"></a-entity>
-        -->
 
         <a-entity cursor="rayOrigin:mouse;" raycaster="far:20; interval:100; objects:.clickable;"></a-entity>
     </a-entity>

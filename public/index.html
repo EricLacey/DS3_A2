@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <a-scene physics="debug: true">
+    <a-scene physics="debug: true" device-orientation-permission-ui="enabled: true">
         
         <a-assets>
             <a-asset-item id="gallery-model" src="/assets/richards_art_gallery_-_audio_tour/scene.gltf" response-type="arraybuffer"> </a-asset-item>
@@ -23,11 +23,11 @@
             <a-asset-item id="t-rex-model" src="/assets/tyrannosarus_rex_free_model/scene.gltf" response-type="arraybuffer"> </a-asset-item>
             <a-asset-item id="halo-model" src="/assets/sacred_ring_halo/scene.gltf" response-type="arraybuffer"> </a-asset-item>
 
-            <!--<audio id="w-soundtrack" src="/assets/Sounds/The Witcher Soundtrack - Toss A Coin To Your Witcher.mp3" preload="auto"></audio>
+            <audio id="w-soundtrack" src="/assets/Sounds/The Witcher Soundtrack - Toss A Coin To Your Witcher.mp3" preload="auto"></audio>
             <audio id="sw-soundtrack" src="/assets/Sounds/Imperial March.mp3" preload="auto"></audio>
             <audio id="jp-soundtrack" src="/assets/Sounds/Jurassic Park theme song.mp3" preload="auto"></audio>
-            <audio id="h-soundtrack" src="/assets/Sounds/halo_3_main_menu.mp3" preload="auto"></audio>-->
-            <audio id="ambient-sounds" src="/assets/Sounds/Bird-Ambience.mp3" preload="auto"></audio>
+            <audio id="h-soundtrack" src="/assets/Sounds/halo_3_main_menu.mp3" preload="auto"></audio>
+            <audio id="ambient-sounds" crossorigin="anonymous" src="/assets/Sounds/Bird-Ambience.mp3" response-type="arraybuffer"></audio>
         </a-assets>
 
         <!-- Set up the environment-->
@@ -38,25 +38,25 @@
         <a-entity class="pedistal" position="25.130 0 3.608" rotation="0 -39.050 0">
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
-            <a-entity id="vader" class="clickable" desktop-pickup="" gltf-model="#vader-helm-model" scale="0.180 0.180 0.180" position="0 2.020 0" rotation="0 -87.5 0"></a-entity>
+            <a-entity id="vader" class="clickable" desktop-pickup="" sound="" data-sound-attb="#sw-soundtrack" gltf-model="#vader-helm-model" scale="0.180 0.180 0.180" position="0 2.020 0" rotation="0 -87.5 0"></a-entity>
         </a-entity>
 
         <a-entity class="pedistal" position="25.130 0 -3.608" rotation="0 39.050 0" >
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
-            <a-entity id="halo" class="clickable" desktop-pickup="" gltf-model="#halo-model" scale="0.0005 0.0005 0.0005" position="0 2.076 0" rotation="0 -87.5 0"></a-entity>
+            <a-entity id="halo" class="clickable" desktop-pickup="" sound="" data-sound-attb="#h-soundtrack" gltf-model="#halo-model" scale="0.0005 0.0005 0.0005" position="0 2.076 0" rotation="0 -87.5 0"></a-entity>
         </a-entity>
 
         <a-entity class="pedistal" position="-19.724 0 -2.884" rotation="0 -30.000 0">
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
-            <a-entity id="witcher_medalion" class="clickable" desktop-pickup="" gltf-model="#witcher-medallion-model"  scale="0.150 0.150 0.150" position="0 2.020 0" rotation="0 0.596 0"></a-entity>
+            <a-entity id="witcher_medalion" class="clickable" sound="" data-sound-attb="#w-soundtrack" desktop-pickup="" gltf-model="#witcher-medallion-model"  scale="0.150 0.150 0.150" position="0 2.020 0" rotation="0 0.596 0"></a-entity>
         </a-entity>
 
         <a-entity class="pedistal" position="-19.724 0 2.884" rotation="0 30.000 0">
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
-            <a-entity id="t-rex" class="clickable" desktop-pickup="" gltf-model="#t-rex-model" scale="0.122 0.122 0.122" position="0.096 1.602 -0.432" rotation="0 -179.207 0"></a-entity>
+            <a-entity id="t-rex" class="clickable" desktop-pickup="" sound="" data-sound-attb="#jp-soundtrack" gltf-model="#t-rex-model" scale="0.122 0.122 0.122" position="0.096 1.602 -0.432" rotation="0 -179.207 0"></a-entity>
         </a-entity>
 
         <!--towards -x-->

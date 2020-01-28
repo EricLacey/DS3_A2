@@ -10,7 +10,7 @@ const express   = require('express');
 const app       = express();
 
 //const vars
-const LISTEN_PORT = 1111;
+const LISTEN_PORT = 8080;
 
 //*******  BEGIN SSL certs 
 forge.options.usePureJavaScript = true; 

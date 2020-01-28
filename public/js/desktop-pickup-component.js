@@ -37,8 +37,12 @@ AFRAME.registerComponent('desktop-pickup', {
             }
         }
 
-        spawn.setAttribute('position', 0 + ' ' + 0 + ' ' + -2 );
+        spawn.setAttribute('position', 0 + ' ' + 0 + ' ' + -1 );
+        if(spawn.id == "t-rex"){
+            spawn.setAttribute('position', 0 + ' ' + (-0.5) + ' ' + -1 );
+        }
         spawn.setAttribute('animation', 'property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear');
+        spawn.setAttribute('rotation', '0 0 0')
         spawn.setAttribute('desktop-active','');
         spawn.removeAttribute('desktop-pickup');
         document.getElementById('camera').appendChild(spawn);

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>DS3 Assignment 2 - Multi-Platform</title>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
@@ -18,6 +17,17 @@
         
         <a-assets>
             <a-asset-item id="gallery-model" src="/assets/richards_art_gallery_-_audio_tour/scene.gltf" response-type="arraybuffer"> </a-asset-item>
+
+            <a-asset-item id="vader-helm-model" src="/assets/darth_vader_helmet/scene.gltf" response-type="arraybuffer"> </a-asset-item>
+            <a-asset-item id="witcher-medallion-model" src="/assets/witcher_medalion/scene.gltf" response-type="arraybuffer"> </a-asset-item>
+            <a-asset-item id="t-rex-model" src="/assets/tyrannosarus_rex_free_model/scene.gltf" response-type="arraybuffer"> </a-asset-item>
+            <a-asset-item id="halo-model" src="/assets/sacred_ring_halo/scene.gltf" response-type="arraybuffer"> </a-asset-item>
+
+            <!--<audio id="w-soundtrack" src="/assets/Sounds/The Witcher Soundtrack - Toss A Coin To Your Witcher.mp3" preload="auto"></audio>
+            <audio id="sw-soundtrack" src="/assets/Sounds/Imperial March.mp3" preload="auto"></audio>
+            <audio id="jp-soundtrack" src="/assets/Sounds/Jurassic Park theme song.mp3" preload="auto"></audio>
+            <audio id="h-soundtrack" src="/assets/Sounds/halo_3_main_menu.mp3" preload="auto"></audio>-->
+            <audio id="ambient-sounds" src="/assets/Sounds/Bird-Ambience.mp3" preload="auto"></audio>
         </a-assets>
 
         <!-- Set up the environment-->
@@ -28,21 +38,25 @@
         <a-entity class="pedistal" position="25.130 0 3.608" rotation="0 -39.050 0">
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
+            <a-entity id="vader" class="clickable" desktop-pickup="" gltf-model="#vader-helm-model" scale="0.180 0.180 0.180" position="0 2.020 0" rotation="0 -87.5 0"></a-entity>
         </a-entity>
 
         <a-entity class="pedistal" position="25.130 0 -3.608" rotation="0 39.050 0" >
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
+            <a-entity id="halo" class="clickable" desktop-pickup="" gltf-model="#halo-model" scale="0.0005 0.0005 0.0005" position="0 2.076 0" rotation="0 -87.5 0"></a-entity>
         </a-entity>
 
         <a-entity class="pedistal" position="-19.724 0 -2.884" rotation="0 -30.000 0">
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
+            <a-entity id="witcher_medalion" class="clickable" desktop-pickup="" gltf-model="#witcher-medallion-model"  scale="0.150 0.150 0.150" position="0 2.020 0" rotation="0 0.596 0"></a-entity>
         </a-entity>
 
         <a-entity class="pedistal" position="-19.724 0 2.884" rotation="0 30.000 0">
             <a-entity static-body geometry="primitive: cylinder; height: 1.55; radius: .15" position="0 0.76863 0" scale="1.0 1.0 3" material="color:#FFFFFF"></a-entity>
             <a-entity static-body geometry="primitive: box; width: 1; height: 1; depth: 1" position ="0 1.580 0" scale="1.0 0.070 1.931" material="color:#FFFFFF"></a-entity>
+            <a-entity id="t-rex" class="clickable" desktop-pickup="" gltf-model="#t-rex-model" scale="0.122 0.122 0.122" position="0.096 1.602 -0.432" rotation="0 -179.207 0"></a-entity>
         </a-entity>
 
         <!--towards -x-->
@@ -59,12 +73,11 @@
         <a-entity class="teleporter clickable" teleport="" geometry="primitive: cylinder; height: 0.3; radius: .5" material="color:#0000FF" position="24 0 2.5"></a-entity>
         <a-entity class="teleporter clickable" teleport="" geometry="primitive: cylinder; height: 0.3; radius: .5" material="color:#0000FF" position="24 0 -2.5"></a-entity>
 
-        <a-entity class="clickable" desktop-pickup="" geometry="primitive:box; width: 1; height: 1; depth: 1"></a-entity>
-
 
     <!--create a rig to hold camera, hand controls, etc and move all at the same time-->
     <a-entity id="rig" position="0 1 0">
         <a-entity id="camera" camera look-controls position="0 1.6 0"></a-camera>
+            <a-entity id="ambient" sound="src:#ambient-sounds; autoplay: true; volume:0.5"></a-entity>
         
             <a-entity id="rhand" mixin="touch" vive-controls="hand:right" oculus-touch-controls="hand:right" windows-motion-controls="" physics-collider="" phase-shift="" velocity="" position=""></a-entity>
             <a-entity id="lhand" mixin="touch" vive-controls="" oculus-touch-controls="" windows-motion-controls="hand:left" physics-collider="" phase-shift="" velocity="" position=""></a-entity>
@@ -77,9 +90,5 @@
         <a-entity cursor="rayOrigin:mouse;" raycaster="far:20; interval:100; objects:.clickable;"></a-entity>
     </a-entity>
 
-
-
-
 </body>
-
 </html>

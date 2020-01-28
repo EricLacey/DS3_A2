@@ -6,11 +6,10 @@ AFRAME.registerComponent('teleport', {
         const Context_AF = this; //this refers to "this" component
 
         Context_AF.el.addEventListener('click', function(event){
-            console.log('clicked');
-            
             Context_AF.teleport();
-                
         });
+
+        //UX effects to show interaction available
         Context_AF.el.addEventListener('mouseenter', function(event){
             //el = element or entity
             //object3D = three.js 3D geometry object
